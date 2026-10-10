@@ -4,9 +4,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 html {
     scroll-behavior: smooth;
 }
+
 /* ===== BODY ===== */
 body {
     font-family: Arial, sans-serif;
@@ -19,6 +21,31 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+/* ===== PAGE BACKGROUND ===== */
+.page-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/hero-car.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 0.9;
+}
+
+.page-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(20, 0, 0, 0.9));
+}
+
 /* ===== NAVBAR ===== */
 header {
     background-color: #111111;
@@ -31,6 +58,7 @@ nav {
     justify-content: space-between;
     align-items: center;
 }
+
 .logo {
     display: flex;
     align-items: center;
@@ -68,6 +96,7 @@ nav ul {
     list-style: none;
     gap: 30px;
 }
+
 nav ul li a {
     color: #ffffff;
     font-size: 16px;
@@ -90,9 +119,11 @@ nav ul li a::after {
 nav ul li a:hover::after {
     width: 100%;
 }
+
 nav ul li a:hover {
     color: #ff0000;
 }
+
 /* ===== HERO SECTION ===== */
 .hero {
     position: relative;
@@ -125,11 +156,6 @@ nav ul li a:hover {
     max-width: 800px;
 }
 
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
 .hero h1 {
     font-size: 72px;
     color: #ffffff;
@@ -149,6 +175,27 @@ nav ul li a:hover {
     animation: fadeInUp 1s ease 0.3s forwards;
     opacity: 0;
 }
+
+.hero .btn {
+    background-color: #ff0000;
+    color: #ffffff;
+    padding: 18px 45px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 2px solid #ff0000;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero .btn:hover {
+    background-color: transparent;
+    color: #ff0000;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.5);
+}
+
+/* ===== BUTTON ===== */
 .btn {
     display: inline-block;
     background-color: #ff0000;
@@ -185,6 +232,7 @@ nav ul li a:hover {
     background-color: #cc0000;
     transform: translateY(-3px);
 }
+
 /* ===== FEATURED SECTION ===== */
 .featured {
     padding: 80px 40px;
@@ -195,7 +243,9 @@ nav ul li a:hover {
     font-size: 40px;
     color: #ffffff;
     margin-bottom: 50px;
+    animation: fadeInUp 1s ease forwards;
 }
+
 .featured h2::after {
     content: '';
     display: block;
@@ -203,7 +253,6 @@ nav ul li a:hover {
     height: 3px;
     background-color: #ff0000;
     margin: 15px auto 0;
-    transition: width 0.8s ease;
     animation: lineExpand 1.5s forwards;
 }
 
@@ -219,8 +268,9 @@ nav ul li a:hover {
     max-width: 1200px;
     margin: 0 auto;
 }
+
 /* ===== CAR CARD ===== */
- .car-card {
+.car-card {
     background-color: #111111;
     border-radius: 12px;
     overflow: hidden;
@@ -230,10 +280,12 @@ nav ul li a:hover {
     transform-style: preserve-3d;
     perspective: 1000px;
 }
+
 .car-card:hover {
     box-shadow: 0 20px 40px rgba(255, 0, 0, 0.3);
     border-color: #ff0000;
 }
+
 .car-card img {
     width: 100%;
     height: 200px;
@@ -264,193 +316,33 @@ nav ul li a:hover {
     margin: 0 20px 20px;
     text-align: center;
 }
-/* ===== FOOTER ===== */
-footer {
-    background-color: #111111;
-    padding: 60px 40px 0;
-    margin-top: 80px;
-    border-top: 2px solid #ff0000;
-}
 
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-bottom: 40px;
-}
-
-.footer-col h3 {
-    color: #ff0000;
+/* ===== WISHLIST BUTTON ===== */
+.wishlist-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
     font-size: 22px;
-    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 2;
 }
 
-.footer-col p {
-    color: #888888;
-    margin-bottom: 10px;
-    font-size: 15px;
+.wishlist-btn:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: scale(1.15);
 }
 
-.footer-col ul {
-    list-style: none;
+.wishlist-btn.active {
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
 }
 
-.footer-col ul li {
-    margin-bottom: 10px;
-}
-
-.footer-col ul li a {
-    color: #888888;
-    transition: color 0.3s;
-}
-
-.footer-col ul li a:hover {
-    color: #ff0000;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding: 20px;
-    border-top: 1px solid #222222;
-    color: #666666;
-    font-size: 14px;
-}
-/* ============================================ */
-/* ===== RESPONSIVE (Mobile) ===== */
-/* ============================================ */
-@media (max-width: 768px) {
-    
-    /* Navbar */
-    nav {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    nav ul {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    nav ul li a {
-        font-size: 14px;
-    }
-    
-    .logo {
-        font-size: 24px;
-    }
-    
-    /* Hero */
-    .hero {
-        padding: 80px 20px;
-        min-height: 70vh;
-        background-attachment: scroll;
-    }
-    
-    .hero h1 {
-        font-size: 36px;
-        letter-spacing: 1px;
-    }
-    
-    .hero p {
-        font-size: 16px;
-        letter-spacing: 2px;
-    }
-    
-    .hero .btn {
-        padding: 14px 30px;
-        font-size: 14px;
-    }
-    
-    /* Featured */
-    .featured {
-        padding: 50px 20px;
-    }
-    
-    .featured h2 {
-        font-size: 28px;
-    }
-    
-    /* Footer */
-    footer {
-        padding: 40px 20px 0;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-    }
-    
-    /* Car Detail */
-    .car-detail {
-        padding: 40px 20px;
-    }
-    
-    .detail-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .detail-info h1 {
-        font-size: 28px;
-    }
-    
-    .detail-info .price {
-        font-size: 24px;
-    }
-    
-    /* About */
-    .about-section {
-        padding: 30px 20px 60px;
-    }
-    
-    .about-content {
-        padding: 25px;
-    }
-    
-    .about-content h2 {
-        font-size: 24px;
-    }
-    
-    .stat-box h3 {
-        font-size: 28px;
-    }
-}
-
-/* ===== RESPONSIVE (Chhoti Mobile) ===== */
-@media (max-width: 480px) {
-    
-    .hero h1 {
-        font-size: 28px;
-    }
-    
-    .hero p {
-        font-size: 14px;
-        letter-spacing: 1px;
-    }
-    
-    .hero .btn {
-        padding: 12px 24px;
-        font-size: 13px;
-    }
-    
-    .logo {
-        font-size: 20px;
-    }
-    
-    nav ul li a {
-        font-size: 13px;
-    }
-    
-    .page-title h1 {
-        font-size: 28px;
-    }
-    
-    .featured h2 {
-        font-size: 24px;
-    }
-}
 /* ===== PAGE TITLE ===== */
 .page-title {
     text-align: center;
@@ -494,6 +386,7 @@ footer {
 #searchBar::placeholder {
     color: #666666;
 }
+
 /* ===== FILTERS ===== */
 .filters {
     display: flex;
@@ -560,33 +453,7 @@ footer {
 #sortSelect:focus {
     border-color: #ff0000;
 }
-/* ===== WISHLIST BUTTON ===== */
 
-
-.wishlist-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    font-size: 22px;
-    cursor: pointer;
-    transition: all 0.3s;
-    z-index: 2;
-}
-
-.wishlist-btn:hover {
-    background-color: rgba(0, 0, 0, 0.9);
-    transform: scale(1.15);
-}
-
-.wishlist-btn.active {
-    background-color: rgba(0, 0, 0, 0.7);
-     box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
-}
 /* ===== CAR DETAIL PAGE ===== */
 .car-detail {
     padding: 60px 40px;
@@ -663,25 +530,6 @@ footer {
     position: static;
 }
 
-/* ===== DETAIL RESPONSIVE ===== */
-@media (max-width: 768px) {
-    .car-detail {
-        padding: 40px 20px;
-    }
-    
-    .detail-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .detail-info h1 {
-        font-size: 28px;
-    }
-    
-    .detail-info .price {
-        font-size: 24px;
-    }
-}
 /* ===== CONTACT FORM ===== */
 .contact-section {
     padding: 40px 20px 80px;
@@ -753,6 +601,7 @@ footer {
 .form-message.error {
     color: #ff0000;
 }
+
 /* ===== ABOUT PAGE ===== */
 .about-section {
     padding: 40px 40px 80px;
@@ -819,6 +668,7 @@ footer {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-5px); }
 }
+
 .stat-box p {
     color: #888888;
     font-size: 15px;
@@ -868,24 +718,93 @@ footer {
     line-height: 1.7;
 }
 
-/* ===== RESPONSIVE ABOUT ===== */
-@media (max-width: 768px) {
-    .about-section {
-        padding: 30px 20px 60px;
-    }
-    
-    .about-content {
-        padding: 25px;
-    }
-    
-    .about-content h2 {
-        font-size: 24px;
-    }
-    
-    .stat-box h3 {
-        font-size: 28px;
-    }
+/* ===== BRAND NAME ===== */
+.brand-name {
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 1.05em;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    transition: all 0.3s;
+    display: inline-block;
 }
+
+.brand-name:hover {
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.9), 0 0 30px rgba(255, 0, 0, 0.5);
+    transform: scale(1.05);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: #111111;
+    padding: 60px 40px 0;
+    margin-top: 80px;
+    border-top: 2px solid #ff0000;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.footer-col h3 {
+    color: #ff0000;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.footer-col p {
+    color: #888888;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #888888;
+    transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: #ff0000;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #222222;
+    color: #666666;
+    font-size: 14px;
+}
+
+/* ===== CARD SHINE EFFECT ===== */
+.car-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.2), transparent);
+    transition: left 0.5s;
+    z-index: 1;
+}
+
+.car-card:hover::before {
+    left: 100%;
+}
+
 /* ===== LOADER ===== */
 .loader {
     position: fixed;
@@ -907,7 +826,6 @@ footer {
     100% { opacity: 0; visibility: hidden; pointer-events: none; }
 }
 
-
 .spinner {
     width: 60px;
     height: 60px;
@@ -921,23 +839,8 @@ footer {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-/* ===== CARD SHINE EFFECT ===== */
-.car-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.2), transparent);
-    transition: left 0.5s;
-    z-index: 1;
-}
 
-.car-card:hover::before {
-    left: 100%;
-}
-/* ===== FADE IN ANIMATIONS ===== */
+/* ===== FADE IN ===== */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -949,52 +852,6 @@ footer {
     }
 }
 
-.hero h1 {
-    animation: fadeInUp 1s ease forwards;
-}
-
-.hero p {
-    animation: fadeInUp 1s ease 0.3s forwards;
-    opacity: 0;
-}
-.hero .btn {
-    background-color: #ff0000;
-    color: #ffffff;
-    padding: 18px 45px;
-    font-size: 16px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border: 2px solid #ff0000;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero .btn:hover {
-    background-color: transparent;
-    color: #ff0000;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.5);
-}
-
-.featured h2 {
-    animation: fadeInUp 1s ease forwards;
-}
-
-/* ===== WAVE EFFECT ===== */
-.hero {
-    position: relative;
-    overflow: hidden;
-}
-
-.wave {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60"><path fill="%230a0a0a" d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z"/></svg>');
-    background-size: cover;
-}
 /* ===== CUSTOM SCROLLBAR ===== */
 ::-webkit-scrollbar {
     width: 10px;
@@ -1012,41 +869,131 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
     background: #cc0000;
 }
-/* ===== PAGE BACKGROUND (Har Page) ===== */
-.page-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('images/hero-car.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-    opacity: 0.9;
+
+/* ============================================ */
+/* ===== RESPONSIVE (Mobile) ===== */
+/* ============================================ */
+@media (max-width: 768px) {
+    
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav ul li a {
+        font-size: 14px;
+    }
+    
+    .logo {
+        font-size: 24px;
+    }
+    
+    .hero {
+        padding: 80px 20px;
+        min-height: 70vh;
+        background-attachment: scroll;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+        letter-spacing: 1px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+    
+    .hero .btn {
+        padding: 14px 30px;
+        font-size: 14px;
+    }
+    
+    .featured {
+        padding: 50px 20px;
+    }
+    
+    .featured h2 {
+        font-size: 28px;
+    }
+    
+    footer {
+        padding: 40px 20px 0;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .car-detail {
+        padding: 40px 20px;
+    }
+    
+    .detail-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .detail-info h1 {
+        font-size: 28px;
+    }
+    
+    .detail-info .price {
+        font-size: 24px;
+    }
+    
+    .about-section {
+        padding: 30px 20px 60px;
+    }
+    
+    .about-content {
+        padding: 25px;
+    }
+    
+    .about-content h2 {
+        font-size: 24px;
+    }
+    
+    .stat-box h3 {
+        font-size: 28px;
+    }
 }
 
-.page-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(20, 0, 0, 0.9));
-}
-/* ===== BRAND NAME STYLING ===== */
-.brand-name {
-    color: #ff0000;
-    font-weight: bold;
-    font-size: 1.05em;
-    letter-spacing: 1px;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-    transition: all 0.3s;
-    display: inline-block;
-}
-
-.brand-name:hover {
-    text-shadow: 0 0 20px rgba(255, 0, 0, 0.9), 0 0 30px rgba(255, 0, 0, 0.5);
-    transform: scale(1.05);
+@media (max-width: 480px) {
+    
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    .hero p {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    
+    .hero .btn {
+        padding: 12px 24px;
+        font-size: 13px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+    
+    nav ul li a {
+        font-size: 13px;
+    }
+    
+    .page-title h1 {
+        font-size: 28px;
+    }
+    
+    .featured h2 {
+        font-size: 24px;
+    }
 }
