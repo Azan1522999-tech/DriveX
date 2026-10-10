@@ -317,30 +317,51 @@ footer {
     color: #666666;
     font-size: 14px;
 }
+/* ============================================ */
 /* ===== RESPONSIVE (Mobile) ===== */
+/* ============================================ */
 @media (max-width: 768px) {
     
     /* Navbar */
     nav {
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
     }
     
     nav ul {
-        gap: 20px;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav ul li a {
+        font-size: 14px;
+    }
+    
+    .logo {
+        font-size: 24px;
     }
     
     /* Hero */
+    .hero {
+        padding: 80px 20px;
+        min-height: 70vh;
+        background-attachment: scroll;
+    }
+    
     .hero h1 {
         font-size: 36px;
+        letter-spacing: 1px;
     }
     
     .hero p {
         font-size: 16px;
+        letter-spacing: 2px;
     }
     
-    .hero {
-        padding: 60px 20px;
+    .hero .btn {
+        padding: 14px 30px;
+        font-size: 14px;
     }
     
     /* Featured */
@@ -359,6 +380,75 @@ footer {
     
     .footer-content {
         grid-template-columns: 1fr;
+    }
+    
+    /* Car Detail */
+    .car-detail {
+        padding: 40px 20px;
+    }
+    
+    .detail-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .detail-info h1 {
+        font-size: 28px;
+    }
+    
+    .detail-info .price {
+        font-size: 24px;
+    }
+    
+    /* About */
+    .about-section {
+        padding: 30px 20px 60px;
+    }
+    
+    .about-content {
+        padding: 25px;
+    }
+    
+    .about-content h2 {
+        font-size: 24px;
+    }
+    
+    .stat-box h3 {
+        font-size: 28px;
+    }
+}
+
+/* ===== RESPONSIVE (Chhoti Mobile) ===== */
+@media (max-width: 480px) {
+    
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    .hero p {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    
+    .hero .btn {
+        padding: 12px 24px;
+        font-size: 13px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+    
+    nav ul li a {
+        font-size: 13px;
+    }
+    
+    .page-title h1 {
+        font-size: 28px;
+    }
+    
+    .featured h2 {
+        font-size: 24px;
     }
 }
 /* ===== PAGE TITLE ===== */
